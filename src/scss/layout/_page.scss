@@ -1,6 +1,44 @@
 body {
-  padding: 2rem;
+  padding: 30px;
   height: 100vh;
   background-color: $color-bg;
   font-family: $font-main;
+}
+
+ul {
+  list-style: none;
+}
+
+.page__main {
+  width: 100%;
+  height: auto;
+}
+
+.form {
+  width: 100%;
+  height: auto;
+  margin: 30px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.section_fav {
+  width: 50%;
+  height: auto;
+  margin: 20px 0 30px 30px;
+  background-color: pink;
+}
+
+.section_main {
+  width: 50%;
+  height: auto;
+  margin: 20px 0 30px 30px;
+  background-color: yellowgreen;
+}
+
+.img {
+  width: 80%;
 }
