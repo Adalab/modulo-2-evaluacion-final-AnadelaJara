@@ -5,7 +5,7 @@ const resultSeries = document.querySelector ('.js_resultSeries');
 const favSeries = document.querySelector ('.js_favSeries');
 const searchInput = document.querySelector ('.js_searchInput');
 const searchButton = document.querySelector ('.js_searchButton');
-//const resetButton = document.querySelector ('.js_resetButton');
+const resetButton = document.querySelector ('.js_resetButton');
 
 /// ARRAY ///
 
@@ -63,24 +63,29 @@ function handleAddToFavList (event){
   //Constante para buscar el id en las series, y que la guarde en una const
   const selectedSerieData = allSeries.find(row => row.mal_id === selectedSerieId);
 
-  ///Constante para encontrar las series en el array y las guarde en otra constante
+  ///Constante para encontrar las series en el array y las guarde en otra constante para el ls
 
   const favSeriesData = favorites.find(row => row.mal_id === selectedSerieId);
 
-  //console.log(favSeriesData);
-
+  // console.log(favSeriesData);
 
   //Condicional para que, si se ha clicado en la serie, no vuelva a añadirse
   if (favSeriesData === undefined) {
     favorites.push (selectedSerieData);
-
   } else {
     alert ('Ya añadida a favoritos');
   }
+
+  // Cambiar elemento clicado de color
+  event.currentTarget.classList.add('border_item');
+
+
   //Llamamos a las funciones:1La que imprime en la sección fav, las favoritas y para guardar en localStorage al estar donde se modifican
   setFavInLocalStorage ();
   renderFav ();
 }
+// let liElement = document.querySelectorAll ('.item_main');
+//   console.log(liElement);
 
 function renderFav (){
   favSeries.innerHTML = '';
@@ -125,7 +130,15 @@ function getFavFromLocalStorage () {
 //Llamamos a la función para coger datos del localS
 getFavFromLocalStorage ();
 
-//Listener para el botón de buscar
+
+function handleClickReset (){
+  searchInput.value = '';
+  resultSeries.innerHTML = '';
+  favSeries.innerHTML = '';
+}
+
+//Listeners
 
 searchButton.addEventListener('click', handleClickSeries);
+resetButton.addEventListener('click', handleClickReset);
 

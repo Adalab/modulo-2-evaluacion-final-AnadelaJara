@@ -1,6 +1,5 @@
 body {
   padding: 30px;
-
   background-color: $blackColor;
   font-family: $font-main;
 }
@@ -25,28 +24,35 @@ ul {
 .input {
   font-family: $font-main;
   font-size: 20px;
-  width: 300px;
+  width: 200px;
   padding-left: 5px;
   border-color: $whiteColor;
-  background-color: $orchidColor;
+  background-color: $lightGray;
   color: $whiteColor;
-  border-radius: 10%;
+  border-radius: 20px;
   margin-right: 20px;
+  &:hover {
+    opacity: 0.75;
+  }
 }
 
 ::placeholder {
-  color: $whiteColor;
+  color: $blackColor;
+  opacity: 0.55;
 }
 
 .button {
   font-family: $font-main;
   font-size: 20px;
-  width: 150px;
-  background-color: $orchidColor;
-  color: $whiteColor;
+  width: 80px;
+  background-color: $lightGray;
+  color: $blackColor;
   border-color: $whiteColor;
-  border-radius: 40%;
+  border-radius: 40px;
   margin-right: 10px;
+  &:hover {
+    opacity: 0.75;
+  }
 }
 
 .container {
@@ -59,6 +65,7 @@ ul {
   height: auto;
   margin: 20px 0 30px 30px;
   border: 2px solid $pinkBebeColor;
+  border-radius: 10px;
   color: $pinkBebeColor;
   padding: 20px;
   text-align: center;
@@ -67,41 +74,51 @@ ul {
 .section_main {
   width: 70%;
   height: auto;
-  margin: 20px 0 30px 30px;
+  margin: 20px 30px 30px 30px;
   border: 2px solid $blueBebeColor;
+  border-radius: 10px;
   padding: 20px;
   text-align: center;
   color: $blueBebeColor;
 }
-// .main_list {
-// }
 
 .lists__title {
-  font-size: 50px;
-  padding: 30px;
-  margin-top: 20px;
-
   &--fav {
     background-color: $pinkBebeColor;
     color: $blackColor;
+    font-size: 30px;
+    margin-bottom: 20px;
+    border-radius: 10px;
   }
   &--main {
+    border-radius: 10px;
+    font-size: 30px;
+    margin-bottom: 20px;
     background-color: $blueBebeColor;
     color: $blackColor;
   }
 }
 
-.title {
-  font-size: 30px;
+.ul_main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+  margin: 50px;
+  width: 180px;
 }
 
-.item_fav {
-  border: $blueBebeColor solid 2px;
+// .title {
+// }
+
+.border_item {
+  // border: $blueBebeColor solid 5px;
+  background-color: $pinkBebeColor;
+  color: $blackColor;
 }
 
 .img_main {
-  width: 40%;
   padding: 20px;
+  width: 200px;
 }
 
 .img_fav {
