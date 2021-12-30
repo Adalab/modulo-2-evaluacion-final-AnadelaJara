@@ -1,7 +1,7 @@
 body {
   padding: 30px;
-  height: 100vh;
-  background-color: $color-bg;
+
+  background-color: $blackColor;
   font-family: $font-main;
 }
 
@@ -12,6 +12,8 @@ ul {
 .page__main {
   width: 100%;
   height: auto;
+  font-family: $font-main;
+  background-color: $blackColor;
 }
 
 .form {
@@ -20,25 +22,88 @@ ul {
   margin: 30px;
 }
 
+.input {
+  font-family: $font-main;
+  font-size: 20px;
+  width: 300px;
+  padding-left: 5px;
+  border-color: $whiteColor;
+  background-color: $orchidColor;
+  color: $whiteColor;
+  border-radius: 10%;
+  margin-right: 20px;
+}
+
+::placeholder {
+  color: $whiteColor;
+}
+
+.button {
+  font-family: $font-main;
+  font-size: 20px;
+  width: 150px;
+  background-color: $orchidColor;
+  color: $whiteColor;
+  border-color: $whiteColor;
+  border-radius: 40%;
+  margin-right: 10px;
+}
+
 .container {
   display: flex;
   flex-direction: row;
 }
 
 .section_fav {
-  width: 50%;
+  width: 30%;
   height: auto;
   margin: 20px 0 30px 30px;
-  background-color: pink;
+  border: 2px solid $pinkBebeColor;
+  color: $pinkBebeColor;
+  padding: 20px;
+  text-align: center;
 }
 
 .section_main {
-  width: 50%;
+  width: 70%;
   height: auto;
   margin: 20px 0 30px 30px;
-  background-color: violet;
+  border: 2px solid $blueBebeColor;
+  padding: 20px;
+  text-align: center;
+  color: $blueBebeColor;
+}
+// .main_list {
+// }
+
+.lists__title {
+  font-size: 50px;
+  padding: 30px;
+  margin-top: 20px;
+
+  &--fav {
+    background-color: $pinkBebeColor;
+    color: $blackColor;
+  }
+  &--main {
+    background-color: $blueBebeColor;
+    color: $blackColor;
+  }
 }
 
-.img {
-  width: 80%;
+.title {
+  font-size: 30px;
+}
+
+.item_fav {
+  border: $blueBebeColor solid 2px;
+}
+
+.img_main {
+  width: 40%;
+  padding: 20px;
+}
+
+.img_fav {
+  width: 70%;
 }

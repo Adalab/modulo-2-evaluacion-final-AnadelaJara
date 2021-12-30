@@ -19,7 +19,7 @@ let favorites = [];
 function getApiData (){
   let inputValue = searchInput.value;
 
-  fetch(`https://api.jikan.moe/v3/search/anime?q=${inputValue}&limit=5`)
+  fetch(`https://api.jikan.moe/v3/search/anime?q=${inputValue}`)
     .then (response => response.json())
     .then (data => {
       allSeries = data.results;
@@ -30,13 +30,14 @@ function getApiData (){
 // Función que imprime en el HTML
 
 function printHtmlSeries (seriesArticle) {
-  console.log({seriesArticle});
-  resultSeries.innerHTML += `<li class="js_add_favorites" data-id="${seriesArticle.mal_id}">
-    <img class="img" src="${seriesArticle.image_url}" alt="Serie:${seriesArticle.title}"/>
-    <p>${seriesArticle.title}</p></li>`;
+  //console.log({seriesArticle});
+  resultSeries.innerHTML += `<li class="js_add_favorites item_main" data-id="${seriesArticle.mal_id}">
+    <img class="img_main" src="${seriesArticle.image_url}" alt="Serie:${seriesArticle.title}"/>
+    <p class="title">${seriesArticle.title}</p>
+    </li>`;
 }
 
-// Función con bucle para recorrer todo el array 
+// Función con bucle para recorrer todo el array
 // Constante / bucle y listener para el click a favoritos (al ser la función donde se recorren todas las series)
 
 function getPrintAllSeries (){
@@ -62,7 +63,7 @@ function handleAddToFavList (event){
   //Constante para buscar el id en las series, y que la guarde en una const
   const selectedSerieData = allSeries.find(row => row.mal_id === selectedSerieId);
 
-  ///Constante para encontrar las series en el array y las guarde en otra constante 
+  ///Constante para encontrar las series en el array y las guarde en otra constante
 
   const favSeriesData = favorites.find(row => row.mal_id === selectedSerieId);
 
@@ -72,6 +73,7 @@ function handleAddToFavList (event){
   //Condicional para que, si se ha clicado en la serie, no vuelva a añadirse
   if (favSeriesData === undefined) {
     favorites.push (selectedSerieData);
+
   } else {
     alert ('Ya añadida a favoritos');
   }
@@ -90,8 +92,9 @@ function renderFav (){
 
 function renderFavItem (eachFavItem) {
   favSeries.innerHTML += `<li>
-  <img class="img" src="${eachFavItem.image_url}" alt="Serie:${eachFavItem.title}"/>
-  <p>${eachFavItem.title}</p></li>`;
+  <p>${eachFavItem.title}</p>
+  <img class="img_fav" src="${eachFavItem.image_url}" alt="Serie:${eachFavItem.title}"/>
+  <i class="fas fa-times-circle remove-fav"></li>`;
 }
 
 function handleClickSeries(event) {
@@ -102,20 +105,20 @@ function handleClickSeries(event) {
 //Función para guardar en el localStorage (se llama desde handleAddToFavList)
 
 function setFavInLocalStorage (){
-  console.log('Guardaré en lS');
+  //console.log('Guardaré en lS');
   localStorage.setItem ('fav-series', JSON.stringify(favorites) );
 }
 
 function getFavFromLocalStorage () {
-  console.log('Sacaré la lista');
+  //console.log('Sacaré la lista');
 
-const savedFavContent = localStorage.getItem('fav-series');
+  const savedFavContent = localStorage.getItem('fav-series');
 
-if (savedFavContent === null){
-  favorites = [];
-} else {
-  console.log();
-  favorites = JSON.parse(savedFavContent);
+  if (savedFavContent === null){
+    favorites = [];
+  } else {
+    //console.log();
+    favorites = JSON.parse(savedFavContent);
   }
   renderFav ();
 }
