@@ -85,6 +85,7 @@ function handleAddToFavList (event){
   renderFav ();
 }
 // let liElement = document.querySelectorAll ('.item_main');
+// let liElement = document.querySelectorAll ('.item_main');
 //   console.log(liElement);
 
 function renderFav (){
@@ -135,6 +136,7 @@ function handleClickReset (){
   searchInput.value = '';
   resultSeries.innerHTML = '';
   favSeries.innerHTML = '';
+
 }
 
 //Listeners

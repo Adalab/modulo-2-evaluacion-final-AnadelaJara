@@ -1,6 +1,6 @@
 body {
   padding: 30px;
-  background-color: $blackColor;
+  background-color: $bloodColor;
   font-family: $font-main;
 }
 
@@ -12,7 +12,7 @@ ul {
   width: 100%;
   height: auto;
   font-family: $font-main;
-  background-color: $blackColor;
+  background-color: $bloodColor;
 }
 
 .form {
@@ -100,11 +100,10 @@ ul {
 }
 
 .ul_main {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  margin: 50px;
-  width: 180px;
 }
 
 // .title {
@@ -122,5 +121,12 @@ ul {
 }
 
 .img_fav {
-  width: 70%;
+  width: 150px;
+}
+
+.ul_fav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
