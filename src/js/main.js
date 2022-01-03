@@ -74,6 +74,7 @@ function handleAddToFavList (event){
     favorites.push (selectedSerieData);
   } else {
     alert ('Ya añadida a favoritos');
+    // favorites.filter(row => row.mal_id !== selectedSerieId);
   }
 
   // Cambiar elemento clicado de color
@@ -84,9 +85,6 @@ function handleAddToFavList (event){
   setFavInLocalStorage ();
   renderFav ();
 }
-// let liElement = document.querySelectorAll ('.item_main');
-// let liElement = document.querySelectorAll ('.item_main');
-//   console.log(liElement);
 
 function renderFav (){
   favSeries.innerHTML = '';
@@ -132,11 +130,12 @@ function getFavFromLocalStorage () {
 getFavFromLocalStorage ();
 
 
+//Función para borrar favoritos del lS
 function handleClickReset (){
-  searchInput.value = '';
-  resultSeries.innerHTML = '';
-  favSeries.innerHTML = '';
+  localStorage.removeItem('fav-series');
 
+  //Para que la página se recargue de nuevo y me borre las listas
+  location.reload();
 }
 
 //Listeners
