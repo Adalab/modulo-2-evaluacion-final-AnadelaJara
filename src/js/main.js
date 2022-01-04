@@ -32,9 +32,11 @@ function getApiData (){
 
 function printHtmlSeries (seriesArticle) {
   // console.log({seriesArticle});
+  //Creo var para la clase de serie fav
   let classFav = '';
+  //Creo nueva favSerieData para poder buscar el id de las series clicadas como favoritas
   let favSeriesData =  favorites.find(row => row.mal_id === seriesArticle.mal_id);
-
+  //Creo comparativa si no está clicada, pintamela sin estilo, si no, con la clase de los favoritos
   if (favSeriesData === undefined) {
     classFav = '';
   } else {
