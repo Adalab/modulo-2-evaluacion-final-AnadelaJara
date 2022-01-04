@@ -6,6 +6,7 @@ const favSeries = document.querySelector ('.js_favSeries');
 const searchInput = document.querySelector ('.js_searchInput');
 const searchButton = document.querySelector ('.js_searchButton');
 const resetButton = document.querySelector ('.js_resetButton');
+const defaultImg = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
 
 /// ARRAY ///
 
@@ -30,11 +31,19 @@ function getApiData (){
 // Función que imprime en el HTML
 
 function printHtmlSeries (seriesArticle) {
-  //console.log({seriesArticle});
-  resultSeries.innerHTML += `<li class="js_add_favorites item_main" data-id="${seriesArticle.mal_id}">
+  // console.log({seriesArticle});
+  //Condicional si no tiene imagen predeterminada, que utilice la default, si no, que pinte las series con la info del api
+  if (allSeries.image_url === null) {
+    resultSeries.innerHTML += `<li class="js_add_favorites item_main" data-id="${seriesArticle.mal_id}">
+    <img class="img_main" src="${defaultImg}" alt="Serie:${seriesArticle.title}"/>
+    <p class="title">${seriesArticle.title}</p>
+    </li>`;
+  } else {
+    resultSeries.innerHTML += `<li class="js_add_favorites item_main" data-id="${seriesArticle.mal_id}">
     <img class="img_main" src="${seriesArticle.image_url}" alt="Serie:${seriesArticle.title}"/>
     <p class="title">${seriesArticle.title}</p>
     </li>`;
+  }
 }
 
 // Función con bucle para recorrer todo el array
@@ -95,10 +104,18 @@ function renderFav (){
 }
 
 function renderFavItem (eachFavItem) {
-  favSeries.innerHTML += `<li>
-  <p>${eachFavItem.title}</p>
-  <img class="img_fav" src="${eachFavItem.image_url}" alt="Serie:${eachFavItem.title}"/>
-  <i class="fas fa-times-circle remove-fav"></li>`;
+//Condicional si no tiene imagen predeterminada, que utilice la default, si no, que pinte los favs con la info del api
+  if (favorites.image_url === null) {
+    favSeries.innerHTML += `<li>
+    <p>${eachFavItem.title}</p>
+    <img class="img_fav" src="${defaultImg}" alt="Serie:${eachFavItem.title}"/>
+    <i class="fas fa-times-circle remove-fav"></li>`;
+  }else {
+    favSeries.innerHTML += `<li>
+    <p>${eachFavItem.title}</p>
+    <img class="img_fav" src="${eachFavItem.image_url}" alt="Serie:${eachFavItem.title}"/>
+    <i class="fas fa-times-circle remove-fav"></li>`;
+  }
 }
 
 function handleClickSeries(event) {
