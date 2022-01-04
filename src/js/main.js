@@ -32,14 +32,23 @@ function getApiData (){
 
 function printHtmlSeries (seriesArticle) {
   // console.log({seriesArticle});
+  let classFav = '';
+  let favSeriesData =  favorites.find(row => row.mal_id === seriesArticle.mal_id);
+
+  if (favSeriesData === undefined) {
+    classFav = '';
+  } else {
+    classFav = 'fav_style';
+  }
+
   //Condicional si no tiene imagen predeterminada, que utilice la default, si no, que pinte las series con la info del api
   if (allSeries.image_url === null) {
-    resultSeries.innerHTML += `<li class="js_add_favorites item_main" data-id="${seriesArticle.mal_id}">
+    resultSeries.innerHTML += `<li class="js_add_favorites item_main ${classFav}" data-id="${seriesArticle.mal_id}">
     <img class="img_main" src="${defaultImg}" alt="Serie:${seriesArticle.title}"/>
     <p class="title">${seriesArticle.title}</p>
     </li>`;
   } else {
-    resultSeries.innerHTML += `<li class="js_add_favorites item_main" data-id="${seriesArticle.mal_id}">
+    resultSeries.innerHTML += `<li class="js_add_favorites item_main ${classFav}" data-id="${seriesArticle.mal_id}">
     <img class="img_main" src="${seriesArticle.image_url}" alt="Serie:${seriesArticle.title}"/>
     <p class="title">${seriesArticle.title}</p>
     </li>`;
@@ -78,16 +87,16 @@ function handleAddToFavList (event){
 
   // console.log(favSeriesData);
 
-  //Condicional para que, si se ha clicado en la serie, no vuelva a añadirse
+  //Condicional para que, si se ha clicado en la serie, no vuelva a añadirse y en main se marque
+
   if (favSeriesData === undefined) {
     favorites.push (selectedSerieData);
   } else {
     alert ('Ya añadida a favoritos');
-    // favorites.filter(row => row.mal_id !== selectedSerieId);
   }
 
   // Cambiar elemento clicado de color
-  event.currentTarget.classList.add('border_item');
+  event.currentTarget.classList.add('fav_style');
 
 
   //Llamamos a las funciones:1La que imprime en la sección fav, las favoritas y para guardar en localStorage al estar donde se modifican
