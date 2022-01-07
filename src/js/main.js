@@ -7,6 +7,8 @@ const searchInput = document.querySelector ('.js_searchInput');
 const searchButton = document.querySelector ('.js_searchButton');
 const resetButton = document.querySelector ('.js_resetButton');
 const defaultImg = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+const logBtn = document.querySelector ('.js_log');
+
 
 /// ARRAY ///
 
@@ -47,14 +49,15 @@ function printHtmlSeries (seriesArticle) {
   if (allSeries.image_url === null) {
     resultSeries.innerHTML += `<li class="js_add_favorites item_main ${classFav}" data-id="${seriesArticle.mal_id}">
     <img class="img_main" src="${defaultImg}" alt="Serie:${seriesArticle.title}"/>
-    <p class="title">${seriesArticle.title}</p>
+    <p class="title">${seriesArticle.title}</p> <p>${seriesArticle.episodes}</p>
     </li>`;
   } else {
     resultSeries.innerHTML += `<li class="js_add_favorites item_main ${classFav}" data-id="${seriesArticle.mal_id}">
     <img class="img_main" src="${seriesArticle.image_url}" alt="Serie:${seriesArticle.title}"/>
-    <p class="title">${seriesArticle.title}</p>
+    <p class="title">${seriesArticle.title}</p> <p>${seriesArticle.episodes}</p>
     </li>`;
   }
+
 }
 
 // Función con bucle para recorrer todo el array
@@ -68,6 +71,13 @@ function getPrintAllSeries (){
   const allImg = document.querySelectorAll ('.js_add_favorites');
   for (const addToFavList of allImg) {
     addToFavList.addEventListener ('click', handleAddToFavList);
+  }
+}
+
+function handleClickResultsCons (ev) {
+  ev.preventDefault ();
+  for (const eachSerieData of allSeries) {
+    console.log (eachSerieData.title);
   }
 }
 
@@ -104,6 +114,7 @@ function handleAddToFavList (event){
   //Llamamos a las funciones:1La que imprime en la sección fav, las favoritas y para guardar en localStorage al estar donde se modifican
   setFavInLocalStorage ();
   renderFav ();
+
 }
 
 function renderFav (){
@@ -171,3 +182,4 @@ function handleClickReset (){
 searchButton.addEventListener('click', handleClickSeries);
 resetButton.addEventListener('click', handleClickReset);
 
+logBtn.addEventListener ('click', handleClickResultsCons);
